@@ -25,13 +25,16 @@ var config = function(dir, file) {
 
   var plugins = {
     doc_comment: true,
-    'local-scope': true
+    'local-scope': true,
+    'jsclass': {},
+    'requirejs': {}
   };
 
   return merge(JSON.parse(config), {
     libs: ['browser', 'ecmascript'],
     loadEagerly: false,
-    plugins: merge(plugins, confs[extname] || {})
+    plugins: merge(plugins, confs[extname] || {}),
+    ecmaVersion: 6
   });
 };
 
