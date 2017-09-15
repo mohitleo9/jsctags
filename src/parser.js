@@ -330,16 +330,27 @@ Parser.prototype.onNode = function(name, node, parent) {
     return false;
   }
 
+  var stringNode;
+
   if (isString(node)) {
+    stringNode = node;
     node = this.walk(node, parent);
   }
 
   if (!isObject(node)) {
-    return;
+    if (stringNode !== 'Promise' || !('Promise' in this.condense)) {
+      return;
+    }
+    node = this.condense[stringNode];
   }
 
   if (!isDefaultType(node['!type'])) {
     return;
+  }
+
+  // hack, ecmascript plugin does all kinds of weird shit to Promise.
+  if (':t' in node) {
+    node = Object.assign({}, node[':t']);
   }
 
   var tag = {
