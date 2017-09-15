@@ -55,7 +55,7 @@
     "object-hash": "^1.1.8",
     "once": "^1.4.0",
     "optimist": "^0.6.1",
-    "tern": "^0.21.0",
+    "tern": "github:mohitleo9/tern#cce147b5a6ecd7e3bbfefd71fe251a72fa17bf09",
     "tern-jsx": "ramitos/tern-jsx#bb32547",
     "tryor": "^0.1.2"
   },
