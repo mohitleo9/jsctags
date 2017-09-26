@@ -338,8 +338,13 @@ Parser.prototype.onNode = function(name, node, parent) {
   }
 
   if (!isObject(node)) {
-    if (stringNode !== 'Promise' || !('Promise' in this.condense)) {
+    if (stringNode !== 'Promise') {
       return;
+    }
+    if (!this.promiseNodeTried) {
+      var def = this.ctx.server.defs.find(function(d) { return 'Promise' in d; });
+      this.promiseNodeTried = true;
+      this.condense['Promise'] = def && def['Promise'];
     }
     node = this.condense[stringNode];
   }
