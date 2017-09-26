@@ -26,7 +26,7 @@ var config = function(dir, file) {
   var plugins = {
     doc_comment: true,
     'local-scope': true,
-    'jsclass': {},
+    'jsclass': {jsctags: true},
     'requirejs': {}
   };
 
